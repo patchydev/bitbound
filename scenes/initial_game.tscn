@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3xdb7ya3ug6g"]
+[gd_scene load_steps=3 format=3 uid="uid://c3xdb7ya3ug6g"]
 
 [ext_resource type="PackedScene" uid="uid://bgewdxpn2w26q" path="res://scenes/character.tscn" id="1_la3e5"]
+[ext_resource type="Script" uid="uid://phcket34tdy0" path="res://scripts/initial_game.gd" id="1_v8iev"]
 
 [node name="InitialGame" type="Node2D"]
+script = ExtResource("1_v8iev")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_la3e5")]
 position = Vector2(1, -8)
