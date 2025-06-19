@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://bv5r5oafhvyew"]
+[gd_scene load_steps=3 format=3 uid="uid://bv5r5oafhvyew"]
+
+[ext_resource type="Script" uid="uid://baadu6yiamwue" path="res://scripts/start_game_button.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://g3q8bytrm570" path="res://scripts/quit_button.gd" id="2_ekxnf"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -21,6 +24,7 @@ offset_top = -16.0
 offset_right = 49.0
 offset_bottom = 15.0
 text = "Start Game"
+script = ExtResource("1_l6cm7")
 
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
@@ -29,6 +33,10 @@ offset_top = 47.0
 offset_right = 21.0
 offset_bottom = 78.0
 text = "Quit"
+script = ExtResource("2_ekxnf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+
+[connection signal="pressed" from="StartGameButton" to="StartGameButton" method="_on_pressed"]
+[connection signal="pressed" from="QuitButton" to="QuitButton" method="_on_pressed"]
