@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 SaveManager="*res://scripts/global/save_manager.gd"
 
+[gui]
+
+theme/custom="uid://ke3xvv42u51i"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
