@@ -1,13 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3xdb7ya3ug6g"]
+[gd_scene load_steps=7 format=4 uid="uid://c3xdb7ya3ug6g"]
 
 [ext_resource type="PackedScene" uid="uid://bgewdxpn2w26q" path="res://scenes/character.tscn" id="1_la3e5"]
 [ext_resource type="Script" uid="uid://phcket34tdy0" path="res://scripts/initial_game.gd" id="1_v8iev"]
+[ext_resource type="Script" uid="uid://cyrtrb07p66s2" path="res://scripts/character.gd" id="3_5xjop"]
+[ext_resource type="Texture2D" uid="uid://bl8rgeh3vy06" path="res://assets/tileset.png" id="3_86lat"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5xjop"]
+texture = ExtResource("3_86lat")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_swc08"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_5xjop")
 
 [node name="InitialGame" type="Node2D"]
 script = ExtResource("1_v8iev")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_la3e5")]
 position = Vector2(1, -8)
+script = ExtResource("3_5xjop")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_swc08")

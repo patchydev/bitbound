@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bv5r5oafhvyew"]
+[gd_scene load_steps=4 format=3 uid="uid://bv5r5oafhvyew"]
 
-[ext_resource type="Script" uid="uid://baadu6yiamwue" path="res://scripts/start_game_button.gd" id="1_l6cm7"]
-[ext_resource type="Script" uid="uid://g3q8bytrm570" path="res://scripts/quit_button.gd" id="2_ekxnf"]
+[ext_resource type="Script" uid="uid://baadu6yiamwue" path="res://scripts/buttons/start_game_button.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://dvl07g3c25dix" path="res://scripts/buttons/tutorial_button.gd" id="2_bqqt6"]
+[ext_resource type="Script" uid="uid://g3q8bytrm570" path="res://scripts/buttons/quit_button.gd" id="2_ekxnf"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -26,12 +27,21 @@ offset_bottom = 15.0
 text = "Start Game"
 script = ExtResource("1_l6cm7")
 
+[node name="TutorialButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -67.0
+offset_top = 30.0
+offset_right = 68.0
+offset_bottom = 61.0
+text = "Play the Tutorial"
+script = ExtResource("2_bqqt6")
+
 [node name="QuitButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = -21.0
-offset_top = 47.0
+offset_top = 73.0
 offset_right = 21.0
-offset_bottom = 78.0
+offset_bottom = 104.0
 text = "Quit"
 script = ExtResource("2_ekxnf")
 
@@ -39,4 +49,5 @@ script = ExtResource("2_ekxnf")
 zoom = Vector2(1.5, 1.5)
 
 [connection signal="pressed" from="StartGameButton" to="StartGameButton" method="_on_pressed"]
+[connection signal="pressed" from="TutorialButton" to="TutorialButton" method="_on_pressed"]
 [connection signal="pressed" from="QuitButton" to="QuitButton" method="_on_pressed"]

@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=4 uid="uid://4xbl08mdd0w8"]
+
+[ext_resource type="Texture2D" uid="uid://bl8rgeh3vy06" path="res://assets/tileset.png" id="1_8ho6b"]
+[ext_resource type="PackedScene" uid="uid://bgewdxpn2w26q" path="res://scenes/character.tscn" id="2_ph3nu"]
+[ext_resource type="Script" uid="uid://cyrtrb07p66s2" path="res://scripts/character.gd" id="3_ph3nu"]
+[ext_resource type="Script" uid="uid://b60r7godfq6e4" path="res://scripts/tutorial_end_script.gd" id="4_4kmhl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4kmhl"]
+texture = ExtResource("1_8ho6b")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_cq4me"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_4kmhl")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cq4me"]
+size = Vector2(88, 20)
+
+[node name="Tutorial" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAD8/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD3/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD1/wAAAAAAAAAAAAD1//f/AAAAAAAAAAD1//j/AAAAAAAAAAD1//n/AAAAAAAAAAD1//r/AAAAAAAAAAD1//v/AAAAAAAAAAD1//7/AAAAAAAAAAD1////AAAAAAAAAAD1//z/AAAAAAAAAAD1//3/AAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAhAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAjAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAlAAAAAAAAAAAAAAAmAAAAAAAAAAAAAAAnAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAfAAAAAAAAAAAAAAAeAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAApAAAAAAAAAAAAAAAqAAAAAAAAAAAAAAArAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAsAP3/AAAAAAAAAAAsAP7/AAAAAAAAAAAsAP//AAAAAAAAAAAtAP3/AAAAAAAAAAAuAP3/AAAAAAAAAAAvAP3/AAAAAAAAAAAwAP3/AAAAAAAAAAAxAP3/AAAAAAAAAAAyAP3/AAAAAAAAAAAzAP3/AAAAAAAAAAA0AP3/AAAAAAAAAAA1AP3/AAAAAAAAAAA2AP3/AAAAAAAAAAA3AP3/AAAAAAAAAAA4AP3/AAAAAAAAAAA5AP3/AAAAAAAAAAA6AP3/AAAAAAAAAAA7AP3/AAAAAAAAAAA8AP3/AAAAAAAAAAA9AP3/AAAAAAAAAAA+AP3/AAAAAAAAAAA/AP3/AAABAAAAAABAAP3/AAABAAAAAABBAP3/AAABAAAAAABCAP3/AAABAAAAAABDAP3/AAABAAAAAABEAP3/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_cq4me")
+
+[node name="Player" parent="." instance=ExtResource("2_ph3nu")]
+position = Vector2(-13, -8)
+script = ExtResource("3_ph3nu")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(13, -32)
+zoom = Vector2(2.5, 2.5)
+position_smoothing_enabled = true
+
+[node name="FirstLabel" type="Label" parent="."]
+offset_left = -111.0
+offset_top = -100.0
+offset_right = 111.0
+offset_bottom = -25.0
+text = "Welcome to BitBound!
+
+Use the Arrow Keys to move."
+horizontal_alignment = 1
+
+[node name="JumpLabel" type="Label" parent="."]
+offset_left = 320.0
+offset_top = -96.0
+offset_right = 542.0
+offset_bottom = -21.0
+text = "Press Space to Jump"
+horizontal_alignment = 1
+
+[node name="CompletionLabel" type="Label" parent="."]
+offset_left = 944.0
+offset_top = -136.0
+offset_right = 1166.0
+offset_bottom = -61.0
+text = "You made it!"
+horizontal_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("4_4kmhl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1060, -40)
+shape = SubResource("RectangleShape2D_cq4me")
